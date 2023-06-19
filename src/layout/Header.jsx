@@ -1,15 +1,27 @@
-import { useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { ContextMenus } from '../context/ContextMenus'
+
 
 function Header(){
     const {
-        dataMenus,
+        menuPrincipal,
         isLoadedMenus
       } = useContext(ContextMenus)
+      
+    // Show fetch errors in console
+    useEffect(()=> {
+        if (isLoadedMenus) {
+            console.log(menuPrincipal)  
+        }
+    }, [isLoadedMenus, menuPrincipal])
 
     return(
         <>
-            {isLoadedMenus && dataMenus.length > 0 && (<p>Ceci est un Header avec un menu</p>)}
+            {isLoadedMenus && 
+            menuPrincipal && 
+            menuPrincipal.length > 0 && (
+                <p>Ceci est un Header avec un menu principal</p>
+            )}
         </>
     )
 }
