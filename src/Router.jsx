@@ -5,6 +5,7 @@ import Page from './pages/Page'
 import Post from './pages/Post'
 import Bateau from './pages/Bateau'
 import Error from './pages/Error'
+import Header from './layout/Header'
 import Footer from './layout/Footer'
 
 /**
@@ -25,6 +26,7 @@ function Routar(){
         <>
             {isLoadedPagesRoutes && isLoadedPostsRoutes && isLoadedBateauxRoutes && (
                 <BrowserRouter>
+                    <Header />
                     <Routes>
                         {dataPagesRoutes && dataPagesRoutes.length > 0 && dataPagesRoutes?.map((p) => (
                             <Route key={p.id} path={p.route} element={<Page id={p.id} />} />

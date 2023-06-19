@@ -11,7 +11,7 @@ function Header(){
       
     return(
         <p>© {currentYear} ###SiteName### - { }
-            {menuFooter.length > 0 && (
+            {menuFooter && menuFooter.length > 0 && (
                 menuFooter.map((i, index) => (
                     <NavLink key={index} to={i.url}>{i.title}</NavLink>
                 ))
