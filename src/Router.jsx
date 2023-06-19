@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useContext } from 'react'
+import { ContextRoutes } from './context/ContextRoutes'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useFetchPagesRoutes, useFetchPostsRoutes, useFetchBateauxRoutes } from './api'
 import Page from './pages/Page'
 import Post from './pages/Post'
 import Bateau from './pages/Bateau'
@@ -10,31 +10,15 @@ import Error from './pages/Error'
  * Displays the routes of the application.
  * @returns {JSX.Element} - The JSX markup for the Router component.
  */
-function Router(){
-    const { FetchPagesRoutes, dataPagesRoutes, isLoadedPagesRoutes, isErrorPagesRoutes  } = useFetchPagesRoutes()
-    const { FetchPostsRoutes, dataPostsRoutes, isLoadedPostsRoutes, isErrorPostsRoutes  } = useFetchPostsRoutes()
-    const { FetchBateauxRoutes, dataBateauxRoutes, isLoadedBateauxRoutes, isErrorBateauxRoutes  } = useFetchBateauxRoutes()
-  
-    useEffect(() => {
-        FetchPagesRoutes()
-        FetchPostsRoutes()
-        FetchBateauxRoutes()
-    },[])
-
-    // Show fetch errors in console
-    useEffect(()=> {
-        if (isLoadedPagesRoutes && isLoadedPostsRoutes && isLoadedBateauxRoutes) {
-            if(isErrorPagesRoutes != null){
-                console.log("Error API Routes pages" + isErrorPagesRoutes)
-            }
-            if(isErrorPostsRoutes != null){
-                console.log("Error API Routes posts" + isErrorPostsRoutes)
-            }
-            if(isErrorBateauxRoutes != null){
-                console.log("Error API Routes bateaux" + isErrorBateauxRoutes)
-            }
-        }
-    }, [dataPagesRoutes, isErrorBateauxRoutes, isErrorPagesRoutes, isErrorPostsRoutes, isLoadedBateauxRoutes, isLoadedPagesRoutes, isLoadedPostsRoutes])
+function Routar(){
+    const {
+        dataPagesRoutes,
+        dataPostsRoutes,
+        dataBateauxRoutes,
+        isLoadedPagesRoutes,
+        isLoadedPostsRoutes,
+        isLoadedBateauxRoutes,
+      } = useContext(ContextRoutes)
     
     return (
         <>
@@ -58,4 +42,4 @@ function Router(){
       )
 }
 
-export default Router
+export default Routar

@@ -1,11 +1,14 @@
 import './App.css'
 import Router from './Router'
+import { RoutesProvider } from './context/ContextRoutes'
 
 function App() {
 
   return (
     <>
-      <Router/>
+      <RoutesProvider>
+        <Router/>
+      </RoutesProvider>
     </>
   )
 }
