@@ -1,6 +1,39 @@
 import { useEffect, useContext } from 'react'
 import { ContextMenus } from '../context/ContextMenus'
 
+// [
+//     {
+//       "location": "menu-principal",
+//       "items": [
+//         {
+//           "title": "Qui sommes-nous",
+//           "url": "http://localhost:8888/headless-wp/qui-sommes-nous/",
+//           "children": [
+//             {
+//               "title": "Ma liste de bateaux",
+//               "url": "http://localhost:8888/headless-wp/ma-liste-de-bateaux/",
+//               "children": []
+//             },
+//             {
+//               "title": "Déclaration d’accessibilité",
+//               "url": "http://localhost:8888/headless-wp/declaration-daccessibilite/",
+//               "children": []
+//             }
+//           ]
+//         },
+//         {
+//           "title": "Contact",
+//           "url": "http://localhost:8888/headless-wp/contact/",
+//           "children": []
+//         },
+//         {
+//           "title": "Plan du site",
+//           "url": "http://localhost:8888/headless-wp/plan-du-site/",
+//           "children": []
+//         }
+//       ]
+//     }
+//   ]
 
 function Header(){
     const {
@@ -8,10 +41,11 @@ function Header(){
         isLoadedMenus
       } = useContext(ContextMenus)
       
-    // Show fetch errors in console
     useEffect(()=> {
         if (isLoadedMenus) {
-            console.log(menuPrincipal)  
+            if(menuPrincipal) {
+                console.log(menuPrincipal)
+            }
         }
     }, [isLoadedMenus, menuPrincipal])
 

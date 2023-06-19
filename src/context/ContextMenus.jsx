@@ -25,9 +25,22 @@ export const MenusProvider = ({ children }) => {
                 const menuPrincipal = dataMenus.filter(obj => obj.location === "menu-principal")
                 const menuMobile = dataMenus.filter(obj => obj.location === "menu-mobile")
                 const menuFooter = dataMenus.filter(obj => obj.location === "menu-footer")
-                menuPrincipal.length > 0 && setMenuPrincipal(menuPrincipal)
-                menuMobile.length > 0 && setMenuMobile(menuMobile)
-                menuFooter.length > 0 && setMenuFooter(menuFooter)
+                
+                if(menuPrincipal) {
+                    const menuPrincipalItems = menuPrincipal.map(i => i.items)
+                    menuPrincipalItems.length > 0 && setMenuPrincipal(menuPrincipalItems.flat())
+                }
+
+                if(menuMobile) {
+                    const menuMobileItems = menuMobile.map(i => i.items)
+                    menuMobileItems.length > 0 && setMenuMobile(menuMobileItems.flat())
+                }
+
+                if(menuFooter) {
+                    const menuFooterItems = menuFooter.map(i => i.items)
+                    menuFooterItems.length > 0 && setMenuFooter(menuFooterItems.flat())
+                }
+
             }
         }
     }, [dataMenus, isErrorMenus, isLoadedMenus])

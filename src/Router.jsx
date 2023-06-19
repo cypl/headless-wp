@@ -5,6 +5,7 @@ import Page from './pages/Page'
 import Post from './pages/Post'
 import Bateau from './pages/Bateau'
 import Error from './pages/Error'
+import Footer from './layout/Footer'
 
 /**
  * Displays the routes of the application.
@@ -36,6 +37,7 @@ function Routar(){
                         ))}
                         <Route path="*" element={<Error />} />
                     </Routes>
+                    <Footer />
                 </BrowserRouter>
             )}
         </>
