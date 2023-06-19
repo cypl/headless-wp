@@ -5,6 +5,7 @@ const ENV = 'http://localhost:8888/headless-wp'
 const pagesRoutes = `${ENV}/wp-json/custom-api/v1/pages-routes`
 const postsRoutes = `${ENV}/wp-json/custom-api/v1/posts-routes`
 const bateauxRoutes = `${ENV}/wp-json/custom-api/v1/bateaux-routes`
+const menus = `${ENV}/wp-json/custom-api/v1/menus`
 
 export function useFetchPagesRoutes() {
     const [dataPagesRoutes, setDataPagesRoutes] = useState({})
@@ -67,4 +68,26 @@ export function useFetchBateauxRoutes() {
     }
   
     return { FetchBateauxRoutes, dataBateauxRoutes, isLoadedBateauxRoutes, isErrorBateauxRoutes }
+}
+
+
+export function useFetchMenus() {
+    const [dataMenus, setDataMenus] = useState({})
+    const [isLoadedMenus, setLoadedMenus] = useState(false)
+    const [isErrorMenus, setErrormenus] = useState()
+  
+    async function FetchMenus() {
+        setLoadedMenus(false)
+        try {
+            const response = await axios.get(menus)
+            setDataMenus(response.data)
+            setErrormenus(null)
+            setLoadedMenus(true)
+        } catch (error) {
+            setErrormenus(error.response)
+            setLoadedMenus(true)
+        }
+    }
+  
+    return { FetchMenus, dataMenus, isLoadedMenus, isErrorMenus }
 }

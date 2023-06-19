@@ -1,13 +1,18 @@
 import './App.css'
+import Header from './layout/Header'
 import Router from './Router'
 import { RoutesProvider } from './context/ContextRoutes'
+import { MenusProvider } from './context/ContextMenus'
 
 function App() {
 
   return (
     <>
       <RoutesProvider>
-        <Router/>
+        <MenusProvider>
+          <Header />
+          <Router/>
+        </MenusProvider>
       </RoutesProvider>
     </>
   )
