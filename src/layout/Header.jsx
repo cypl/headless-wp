@@ -1,24 +1,20 @@
 import { useState, useEffect, useContext } from 'react'
 import { ContextSiteInfos } from '../context/ContextSiteInfos'
-import { ContextAcfOptions } from '../context/ContextAcfOptions'
 import { NavLink } from 'react-router-dom'
 import { styled, createGlobalStyle } from 'styled-components';
+import HeaderBranding from './header/HeaderBranding';
 // import { colors } from '../utils/theme'
 
 const GlobalStyle = createGlobalStyle`
     .header {
         height: ${props => (props.hasScrolled ? "60px" : "100px")};
     }
-`;
+`
 
 function Header(){
     const {
         menuPrincipal,
-        dataSiteInfos
       } = useContext(ContextSiteInfos)
-    const {
-        dataAcfHeader
-      } = useContext(ContextAcfOptions)
 
     const [ hasScrolled, setHasScrolled ] = useState(false)
     useEffect(() => {
@@ -43,19 +39,7 @@ function Header(){
         <>  
             <GlobalStyle hasScrolled={hasScrolled} />
             <HeaderContainer className="header">
-                
-                <div className='branding'>
-                    {dataAcfHeader && dataSiteInfos &&
-                        <figure className="figure-logo-header">
-                            {dataAcfHeader && !hasScrolled &&
-                                <img className={`logo_header_img ${dataAcfHeader.logoSizeTop}`} src={dataAcfHeader.logo} alt={dataSiteInfos.name} />
-                            }
-                            {dataAcfHeader && hasScrolled &&
-                                <img className={`logo_header_img ${dataAcfHeader.logoSizeScroll}`} src={dataAcfHeader.logo} alt={dataSiteInfos.name} />
-                            }
-                        </figure>
-                    }
-                </div>
+                <HeaderBranding hasScrolled={hasScrolled} />
 
                 <div className='content_nav_header'>
                     <ul>
