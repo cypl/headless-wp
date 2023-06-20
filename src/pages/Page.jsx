@@ -1,6 +1,10 @@
 function Page(){
     return (
-        <p>Ceci est une page.</p>
+        <section>
+            <div className="content_width">
+                <p>Ceci est une page.</p>
+            </div>
+        </section>
     )
 }
 

@@ -1,0 +1,84 @@
+/* ====================================================================================================== */
+/* =fonts */
+/* ====================================================================================================== */
+h1 {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: normal;
+}
+h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: normal;
+}
+h3 {
+    font-size: 1.35rem;
+    margin: 0;
+    line-height: 1.35;
+    font-weight: normal;
+}
+h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
+h5 {
+    font-size: 1.15rem;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
+h6 {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
+ul {
+    font-size: 1rem;
+    margin: 0;
+    padding-left: 0;
+    line-height: 1.7;
+}
+li {
+    list-style: none;
+    position: relative;
+    /* font-family: $regular; */
+}
+li strong {
+    font-family: $black;
+    font-weight:normal;
+}
+p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.7;
+    /* font-family: $regular; */
+}
+p strong {
+    /* font-family: $black; */
+    font-weight:normal;
+}
+p.chapeau {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.7;
+    /* font-family: $regular; */
+}
+p.chapeau strong {
+    /* font-family: $black; */
+}
+p.legende,
+ul.legende {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+    /* font-family: $regular; */
+}
+p.legende strong,
+ul.legende strong {
+    /* font-family: $black; */
+}
