@@ -1,4 +1,3 @@
-import './styles/App.css'
 import Router from './Router'
 import { RoutesProvider } from './context/ContextRoutes'
 import { SiteInfosProvider } from './context/ContextSiteInfos'
