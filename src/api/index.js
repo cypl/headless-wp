@@ -6,6 +6,7 @@ const pagesRoutes = `${ENV}/wp-json/custom-api/v1/pages-routes`
 const postsRoutes = `${ENV}/wp-json/custom-api/v1/posts-routes`
 const bateauxRoutes = `${ENV}/wp-json/custom-api/v1/bateaux-routes`
 const menus = `${ENV}/wp-json/custom-api/v1/menus`
+const siteInfos = `${ENV}/wp-json/custom-api/v1/site-infos`
 
 export function useFetchPagesRoutes() {
     const [dataPagesRoutes, setDataPagesRoutes] = useState({})
@@ -90,4 +91,25 @@ export function useFetchMenus() {
     }
   
     return { FetchMenus, dataMenus, isLoadedMenus, isErrorMenus }
+}
+
+export function useFetchSiteInfos() {
+    const [dataSiteInfos, setDataSiteInfos] = useState({})
+    const [isLoadedSiteInfos, setLoadedSiteInfos] = useState(false)
+    const [isErrorSiteInfos, setErrorSiteInfos] = useState()
+  
+    async function FetchSiteInfos() {
+        setLoadedSiteInfos(false)
+        try {
+            const response = await axios.get(siteInfos)
+            setDataSiteInfos(response.data)
+            setErrorSiteInfos(null)
+            setLoadedSiteInfos(true)
+        } catch (error) {
+            setErrorSiteInfos(error.response)
+            setLoadedSiteInfos(true)
+        }
+    }
+  
+    return { FetchSiteInfos, dataSiteInfos, isLoadedSiteInfos, isErrorSiteInfos }
 }

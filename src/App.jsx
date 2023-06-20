@@ -1,16 +1,16 @@
-import './App.css'
+import './styles/App.css'
 import Router from './Router'
 import { RoutesProvider } from './context/ContextRoutes'
-import { MenusProvider } from './context/ContextMenus'
+import { SiteInfosProvider } from './context/ContextSiteInfos'
 
 function App() {
 
   return (
     <>
       <RoutesProvider>
-        <MenusProvider>
+        <SiteInfosProvider>
           <Router/>
-        </MenusProvider>
+        </SiteInfosProvider>
       </RoutesProvider>
     </>
   )

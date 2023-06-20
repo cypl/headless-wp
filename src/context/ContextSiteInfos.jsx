@@ -1,22 +1,25 @@
 import { useState, useEffect, createContext } from 'react'
 import PropTypes from 'prop-types'
-import { useFetchMenus } from '../api'
+import { useFetchMenus, useFetchSiteInfos } from '../api'
 
-export const ContextMenus = createContext()
+export const ContextSiteInfos = createContext()
 
-export const MenusProvider = ({ children }) => {
+export const SiteInfosProvider = ({ children }) => {
 
-    const { FetchMenus, dataMenus, isLoadedMenus, isErrorMenus  } = useFetchMenus()
+    const { FetchMenus, dataMenus, isLoadedMenus, isErrorMenus } = useFetchMenus()
     const [ menuPrincipal, setMenuPrincipal ] = useState()
     const [ menuMobile, setMenuMobile ] = useState()
     const [ menuFooter, setMenuFooter ] = useState()
+    const { FetchSiteInfos, dataSiteInfos, isLoadedSiteInfos, isErrorSiteInfos } = useFetchSiteInfos()
+
 
     useEffect(() => {
         FetchMenus()
+        FetchSiteInfos()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    // Show fetch errors in console
+    // Menus routes - Show fetch errors in console and filter data
     useEffect(()=> {
         if (isLoadedMenus) {
             if(isErrorMenus != null){
@@ -45,20 +48,31 @@ export const MenusProvider = ({ children }) => {
         }
     }, [dataMenus, isErrorMenus, isLoadedMenus])
 
+    // Site infos routes - Show fetch errors in console and filter data
+    useEffect(()=> {
+        if (isLoadedSiteInfos) {
+            if(isErrorSiteInfos != null){
+                console.log("Error API site infos" + isErrorSiteInfos)
+            }
+        }
+    }, [isErrorSiteInfos, isLoadedSiteInfos])
+
   return (
-    <ContextMenus.Provider
+    <ContextSiteInfos.Provider
       value={{
         menuPrincipal,
         menuMobile,
         menuFooter,
-        isLoadedMenus
+        isLoadedMenus,
+        dataSiteInfos,
+        isLoadedSiteInfos,
       }}
     >
       {children}
-    </ContextMenus.Provider>
+    </ContextSiteInfos.Provider>
   )
 }
 
-MenusProvider.propTypes = {
+SiteInfosProvider.propTypes = {
   children: PropTypes.any,
 }
