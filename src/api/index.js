@@ -7,6 +7,7 @@ const postsRoutes = `${ENV}/wp-json/custom-api/v1/posts-routes`
 const bateauxRoutes = `${ENV}/wp-json/custom-api/v1/bateaux-routes`
 const menus = `${ENV}/wp-json/custom-api/v1/menus`
 const siteInfos = `${ENV}/wp-json/custom-api/v1/site-infos`
+const acfCustomisationOptions = `${ENV}/wp-json/custom-api/v1/options/all`
 
 export function useFetchPagesRoutes() {
     const [dataPagesRoutes, setDataPagesRoutes] = useState({})
@@ -112,4 +113,25 @@ export function useFetchSiteInfos() {
     }
   
     return { FetchSiteInfos, dataSiteInfos, isLoadedSiteInfos, isErrorSiteInfos }
+}
+
+export function useFetchAcfCustomisation() {
+    const [dataAcfCustomisation, setDataAcfCustomisation] = useState({})
+    const [isLoadedAcfCustomisation, setLoadedAcfCustomisation] = useState(false)
+    const [isErrorAcfCustomisation, setErrorAcfCustomisation] = useState()
+  
+    async function FetchAcfCustomisation() {
+        setLoadedAcfCustomisation(false)
+        try {
+            const response = await axios.get(acfCustomisationOptions)
+            setDataAcfCustomisation(response.data)
+            setErrorAcfCustomisation(null)
+            setLoadedAcfCustomisation(true)
+        } catch (error) {
+            setErrorAcfCustomisation(error.response)
+            setLoadedAcfCustomisation(true)
+        }
+    }
+  
+    return { FetchAcfCustomisation, dataAcfCustomisation, isLoadedAcfCustomisation, isErrorAcfCustomisation }
 }
