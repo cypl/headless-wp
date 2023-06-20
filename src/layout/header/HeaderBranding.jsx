@@ -2,17 +2,13 @@ import { useContext } from 'react'
 import { ContextSiteInfos } from '../../context/ContextSiteInfos'
 import { ContextAcfOptions } from '../../context/ContextAcfOptions'
 import { NavLink } from 'react-router-dom'
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 import PropTypes from 'prop-types'
 
 
 function HeaderBranding({hasScrolled}){
-    const {
-        dataSiteInfos
-      } = useContext(ContextSiteInfos)
-    const {
-        dataAcfHeader
-      } = useContext(ContextAcfOptions)
+    const { dataSiteInfos } = useContext(ContextSiteInfos)
+    const { dataAcfHeader } = useContext(ContextAcfOptions)
 
     return (
         <Branding>
@@ -32,10 +28,9 @@ function HeaderBranding({hasScrolled}){
 
 export default HeaderBranding
 
-
 HeaderBranding.propTypes = {
     hasScrolled: PropTypes.bool,
-  }
+}
 
 const Branding = styled.div`
     height: 100%;
