@@ -7,7 +7,7 @@ export const ContextAcfOptions = createContext()
 export const AcfOptionsProvider = ({ children }) => {
 
     const { FetchAcfCustomisation, dataAcfCustomisation, isLoadedAcfCustomisation, isErrorAcfCustomisation  } = useFetchAcfCustomisation()
-    const [ dataHeader, setDataHeader ] = useState();
+    const [ dataAcfHeader, setDataAcfHeader ] = useState();
 
     useEffect(() => {
         FetchAcfCustomisation()
@@ -21,14 +21,14 @@ export const AcfOptionsProvider = ({ children }) => {
                 console.log("Error API ACF Options")
                 console.log(isErrorAcfCustomisation)
             }
-            // Data Header
+            // Data for Header
             const dataHeader = {
                 btnPhone: dataAcfCustomisation.texte_du_bouton_dappel,
                 txtPhone: dataAcfCustomisation.numero_de_telephone,
                 btnTxt: dataAcfCustomisation.texte_du_bouton_contact,
                 btnRoute: "/" + dataAcfCustomisation.url_de_la_page_contact.post_name,
             }
-            setDataHeader(dataHeader)
+            setDataAcfHeader(dataHeader)
             
             
         }
@@ -37,7 +37,7 @@ export const AcfOptionsProvider = ({ children }) => {
   return (
     <ContextAcfOptions.Provider
       value={{
-        dataHeader
+        dataAcfHeader
       }}
     >
       {children}
