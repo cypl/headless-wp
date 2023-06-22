@@ -12,7 +12,6 @@ function HeaderNav() {
 
     // Si le NavLink qui a la classe .active a aussi une classe .sub-menu-link
     // alors le <li> parent qui a la classe .parent doit avoir son élément enfant <NavLink> avec la classe ".menu-link" prendre également la classe ".active"
-  
     
     return (
       <>  
@@ -39,19 +38,24 @@ function HeaderNav() {
               ))
             )}
           </MenuHeader>
-          
-          <CallToAction 
-            text={dataAcfHeader && dataAcfHeader.txtPhone} 
-            type={"phone"} 
-            href={dataAcfHeader && `tel:` + dataAcfHeader.txtPhone}
-            target={"externe"}
-            />
 
-          <CallToAction 
-            text={dataAcfHeader && dataAcfHeader.btnTxt} 
-            type={"primaire"}
-            href={dataAcfHeader && dataAcfHeader.btnRoute}
-            target={"interne"}
+          
+            {dataAcfHeader && dataAcfHeader.showPhone && 
+                <CallToAction 
+                    text={dataAcfHeader && dataAcfHeader.txtPhone} 
+                    type={"phone"} 
+                    href={dataAcfHeader && `tel:` + dataAcfHeader.txtPhone}
+                    target={"externe"}
+                    style={{marginLeft:"0.5rem"}}
+                />
+            }
+
+            <CallToAction 
+                text={dataAcfHeader && dataAcfHeader.btnTxt} 
+                type={"primaire"}
+                href={dataAcfHeader && dataAcfHeader.btnRoute}
+                target={"interne"}
+                style={{marginLeft:"1rem"}}
             />
 
         </ContentNavHeader>

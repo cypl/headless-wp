@@ -12,7 +12,7 @@ import { colors } from '../utils/theme'
  * @param {string}  props.target - If the target of the link is "interne" or "externe"
  * @returns {JSX.Element} - The JSX markup for the CallToAction component.
  */
-function CallToAction({type, text, href, target}){
+function CallToAction({type, text, href, target, style}){
     return(
         <>
             <GlobalStyle />
@@ -23,6 +23,7 @@ function CallToAction({type, text, href, target}){
                         type === "primaire" && "cta cta_primaire"    
                     }
                     to={href}
+                    style={style}
                     >
                     {text}
                 </Link>
@@ -35,7 +36,9 @@ function CallToAction({type, text, href, target}){
                         type === "phone" && "cta cta_secondaire cta_phone"     
                     }
                     href={href}
-                    target={type != "phone" && "_blank"}
+                    target={type === "phone" ? "" : "_blank"}
+                    rel="noreferrer"
+                    style={style}
                     >
                     {type === "phone" && 
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
@@ -56,6 +59,7 @@ CallToAction.propTypes = {
     text: PropTypes.string,
     href: PropTypes.string,
     target: PropTypes.string,
+    style: PropTypes.object,
 }
 
 const GlobalStyle = createGlobalStyle`
