@@ -39,6 +39,7 @@ const SiteWrapper = styled.div`
     color: ${colors.clair};
   }
   & :focus {
-    outline: 2px solid ${colors.primaire1};
+    // outline: 2px solid ${colors.primaire1};
+    outline: none;
   }
 `

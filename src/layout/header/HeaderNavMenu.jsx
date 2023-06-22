@@ -9,7 +9,7 @@ function HeaderNavMenu(){
 
     // Si le NavLink qui a la classe .active a aussi une classe .sub-menu-link
     // alors le <li> parent qui a la classe .parent doit avoir son élément enfant <NavLink> avec la classe ".menu-link" prendre également la classe ".active"
-    
+
     return (
         <MenuHeader>
             {menuPrincipal && menuPrincipal.length > 0 && (
@@ -78,10 +78,16 @@ const MenuHeader = styled.ul`
             }
         }
         & .sub-menu{
-            display: none;
+            visibility: hidden;
+            opacity:0;
+            transform: translateY(10px);
+            transition:0.1s opacity ease-in-out, 0.1s transform ease-in-out;
         }
         &:hover .sub-menu{
-            display: block;
+            visibility: visible;
+            opacity:1;
+            transform: translateY(0px);
+            transition:0.1s opacity ease-in-out, 0.1s transform ease-in-out;
         }
     }
 `
