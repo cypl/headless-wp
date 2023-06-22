@@ -46,7 +46,7 @@ function HeaderNav() {
                     type={"phone"} 
                     href={dataAcfHeader && `tel:` + dataAcfHeader.txtPhone}
                     target={"externe"}
-                    style={{marginLeft:"0.5rem"}}
+                    style={{marginLeft:"10px"}}
                 />
             }
 
@@ -55,7 +55,7 @@ function HeaderNav() {
                 type={"primaire"}
                 href={dataAcfHeader && dataAcfHeader.btnRoute}
                 target={"interne"}
-                style={{marginLeft:"1rem"}}
+                style={{marginLeft:"10px"}}
             />
 
         </ContentNavHeader>
@@ -85,12 +85,12 @@ const MenuHeader = styled.ul`
     justify-content: flex-end;
     & li{
         line-height: 40px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         background: transparent;
         position: relative;
         & a{
             display: inline-block;
-            padding: 0 15px;
+            padding: 0 10px;
             color: #193C2B;
             position: relative;
             transition: 0.1s color ease-in-out;
@@ -108,11 +108,11 @@ const MenuHeader = styled.ul`
                 transition: 0.2s width ease-in-out;
             }
             &:hover::after{
-                width: calc(100% - 30px);
+                width: calc(100% - 20px);
                 transition: 0.2s width ease-in-out;
             }
             &.active::after{
-                width: calc(100% - 30px);
+                width: calc(100% - 20px);
             }
         }
         & .sub-menu{

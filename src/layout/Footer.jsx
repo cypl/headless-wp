@@ -56,7 +56,7 @@ const FooterWrapper = styled.div`
         width: 100%;
         text-align: center;
         position: relative;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         margin: 0;
         & .menu-footer{
             & a {

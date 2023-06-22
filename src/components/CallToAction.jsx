@@ -64,12 +64,12 @@ CallToAction.propTypes = {
 
 const GlobalStyle = createGlobalStyle`
   .cta {
-    padding: 0.7rem 1.6rem 0.8rem 1.6rem;
+    padding: 0.7rem 1.5rem 0.8rem 1.5rem;
     border: none;
     border-radius: 2rem;
     line-height:1;
     font-weight:bold;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     cursor: pointer;
     display: inline-block;
     white-space: nowrap;
