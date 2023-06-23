@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${colors.primaire};
     color: ${colors.gris};
   }
-`;
+`
 const SiteWrapper = styled.div`
   & mark {
     background: transparent;
