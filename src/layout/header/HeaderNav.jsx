@@ -1,33 +1,29 @@
-import { useState } from 'react'
 import { styled } from 'styled-components'
+import PropTypes from 'prop-types'
 import HeaderNavMenu from './HeaderNavMenu'
 import HeaderCallToAction from './HeaderNavCallToAction'
 import { colors } from '../../utils/theme'
 
-function HeaderNav() {
-    const [ burgerOpen, setBurgerOpen ] = useState(false)
-
-    function burgerToggle(){
-        setBurgerOpen(!burgerOpen)
-    }
-
+function HeaderNav({burgerToggle, burgerOpen }) {
     return (
       <>  
         <ContentNavHeader>
-
             <HeaderNavMenu burgerOpen={burgerOpen}/>
             <HeaderCallToAction burgerOpen={burgerOpen} />
             <BurgerTrigger onClick={() => burgerToggle()} className={burgerOpen && "open"}>
                 <div><span></span><span></span><span></span><span></span></div>
             </BurgerTrigger>
-
         </ContentNavHeader>
       </>
     )
-  }
+}
   
-  export default HeaderNav
+export default HeaderNav
 
+HeaderNav.propTypes = {
+    burgerOpen: PropTypes.bool,
+    burgerToggle: PropTypes.func,
+}
 
 const ContentNavHeader = styled.div`
     height: 100%;
