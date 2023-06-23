@@ -12,7 +12,7 @@ import Footer from './layout/Footer'
  * Displays the routes of the application.
  * @returns {JSX.Element} - The JSX markup for the Router component.
  */
-function Routar(){
+function Router(){
     const {
         dataPagesRoutes,
         dataPostsRoutes,
@@ -46,4 +46,4 @@ function Routar(){
       )
 }
 
-export default Routar
+export default Router
