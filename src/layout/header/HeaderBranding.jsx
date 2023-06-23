@@ -49,39 +49,51 @@ const Branding = styled.div`
         }
         & .height25 {
             height: 25px;
+            transition:0.15s height ease-in-out;
         }
         & .height30 {
             height: 30px;
+            transition:0.15s height ease-in-out;
         }
         & .height35 {
             height: 35px;
+            transition:0.15s height ease-in-out;
         }
         & .height40 {
             height: 40px;
+            transition:0.15s height ease-in-out;
         }
         & .height45 {
             height: 45px;
+            transition:0.15s height ease-in-out;
         }
         & .height50 {
             height: 50px;
+            transition:0.15s height ease-in-out;
         }
         & .height55 {
             height: 55px;
+            transition:0.15s height ease-in-out;
         }
         & .height60 {
             height: 60px;
+            transition:0.15s height ease-in-out;
         }
         & .height65 {
             height: 65px;
+            transition:0.15s height ease-in-out;
         }
         & .height70 {
             height: 70px;
+            transition:0.15s height ease-in-out;
         }
         & .height75 {
             height: 75px;
+            transition:0.15s height ease-in-out;
         }
         & .height80 {
             height: 80px;
+            transition:0.15s height ease-in-out;
         }
     }
 `
