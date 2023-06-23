@@ -1,12 +1,10 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { styled } from 'styled-components'
-import { ContextAcfOptions } from '../../context/ContextAcfOptions'
 import HeaderNavMenu from './HeaderNavMenu'
-import CallToAction from '../../components/CallToAction'
+import HeaderCallToAction from './HeaderNavCallToAction'
 import { colors } from '../../utils/theme'
 
 function HeaderNav() {
-    const { dataAcfHeader } = useContext(ContextAcfOptions)    
     const [ burgerOpen, setBurgerOpen ] = useState(false)
 
     function burgerToggle(){
@@ -17,26 +15,8 @@ function HeaderNav() {
       <>  
         <ContentNavHeader>
 
-            <HeaderNavMenu/>
-          
-            {dataAcfHeader && dataAcfHeader.showPhone && 
-                <CallToAction 
-                    text={dataAcfHeader && dataAcfHeader.txtPhone} 
-                    type={"phone"} 
-                    href={dataAcfHeader && `tel:` + dataAcfHeader.txtPhone}
-                    target={"externe"}
-                    style={{marginLeft:"10px"}}
-                />
-            }
-
-            <CallToAction 
-                text={dataAcfHeader && dataAcfHeader.btnTxt} 
-                type={"primaire"}
-                href={dataAcfHeader && dataAcfHeader.btnRoute}
-                target={"interne"}
-                style={{marginLeft:"10px"}}
-            />
-
+            <HeaderNavMenu burgerOpen={burgerOpen}/>
+            <HeaderCallToAction burgerOpen={burgerOpen} />
             <BurgerTrigger onClick={() => burgerToggle()} className={burgerOpen && "open"}>
                 <div><span></span><span></span><span></span><span></span></div>
             </BurgerTrigger>
