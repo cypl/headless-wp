@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import { styled } from 'styled-components'
-import PropTypes from 'prop-types'
 import { ContextAcfOptions } from '../../context/ContextAcfOptions'
+import { ContextSiteInfos } from '../../context/ContextSiteInfos'
 import CallToAction from '../../components/CallToAction'
 
 
-function HeaderNavCallToAction({burgerOpen}){
+function HeaderNavCallToAction(){
     const { dataAcfHeader } = useContext(ContextAcfOptions)    
+    const { burgerOpen } = useContext(ContextSiteInfos)
 
     return (
         <CallToActionMenu className={burgerOpen && "hideCtaMenus"}>
@@ -32,9 +33,6 @@ function HeaderNavCallToAction({burgerOpen}){
 
 export default HeaderNavCallToAction
 
-HeaderNavCallToAction.propTypes = {
-    burgerOpen: PropTypes.bool,
-}
 
 const CallToActionMenu = styled.div`
     opacity:1;

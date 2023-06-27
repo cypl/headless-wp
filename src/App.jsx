@@ -2,7 +2,7 @@ import Router from './Router'
 import { RoutesProvider } from './context/ContextRoutes'
 import { SiteInfosProvider } from './context/ContextSiteInfos'
 import { AcfOptionsProvider } from './context/ContextAcfOptions'
-import { styled, createGlobalStyle } from 'styled-components';
+import { styled, createGlobalStyle } from 'styled-components'
 import { colors } from './utils/theme'
 
 function App() {

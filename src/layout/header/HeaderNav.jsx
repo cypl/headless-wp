@@ -1,10 +1,14 @@
+import { useContext } from 'react'
 import { styled } from 'styled-components'
-import PropTypes from 'prop-types'
 import HeaderNavMenu from './HeaderNavMenu'
 import HeaderCallToAction from './HeaderNavCallToAction'
 import { colors } from '../../utils/theme'
+import { ContextSiteInfos } from '../../context/ContextSiteInfos'
 
-function HeaderNav({burgerToggle, burgerOpen }) {
+function HeaderNav() {
+    
+    const { burgerOpen, burgerToggle } = useContext(ContextSiteInfos)
+
     return (
       <>  
         <ContentNavHeader>
@@ -19,11 +23,6 @@ function HeaderNav({burgerToggle, burgerOpen }) {
 }
   
 export default HeaderNav
-
-HeaderNav.propTypes = {
-    burgerOpen: PropTypes.bool,
-    burgerToggle: PropTypes.func,
-}
 
 const ContentNavHeader = styled.div`
     height: 100%;

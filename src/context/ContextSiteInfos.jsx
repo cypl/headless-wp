@@ -57,6 +57,17 @@ export const SiteInfosProvider = ({ children }) => {
         }
     }, [isErrorSiteInfos, isLoadedSiteInfos])
 
+  const [ burgerOpen, setBurgerOpen ] = useState(false)
+
+  function burgerToggle(){
+    setBurgerOpen(!burgerOpen)
+    if(!burgerOpen){
+      document.getElementsByTagName('html')[0].style.overflowY = "hidden"
+    }else{
+      document.getElementsByTagName('html')[0].style.overflowY = "auto"
+    }
+  }
+
   return (
     <ContextSiteInfos.Provider
       value={{
@@ -66,6 +77,8 @@ export const SiteInfosProvider = ({ children }) => {
         isLoadedMenus,
         dataSiteInfos,
         isLoadedSiteInfos,
+        burgerOpen,
+        burgerToggle,
       }}
     >
       {children}

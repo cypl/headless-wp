@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { styled, createGlobalStyle } from 'styled-components'
+import { ContextSiteInfos } from '../context/ContextSiteInfos'
 import HeaderBranding from './header/HeaderBranding'
 import HeaderNav from './header/HeaderNav'
 import HeaderShadow from './header/HeaderShadow'
 import { colors } from '../utils/theme'
 
-function Header(){
 
+function Header(){
+    const { burgerOpen } = useContext(ContextSiteInfos)
     const [ hasScrolled, setHasScrolled ] = useState(false)
     
     useEffect(() => {
@@ -24,18 +26,14 @@ function Header(){
         }
     }, [])
 
-    const [ burgerOpen, setBurgerOpen ] = useState(false)
-
-    function burgerToggle(){
-        setBurgerOpen(!burgerOpen)
-    }
+    
       
     return(
         <>  
             <GlobalStyle hasScrolled={hasScrolled} />
             <HeaderContainer className="header">
                 <HeaderBranding hasScrolled={hasScrolled} />
-                <HeaderNav burgerToggle={burgerToggle} burgerOpen={burgerOpen}/>
+                <HeaderNav />
                 <HeaderShadow />
             </HeaderContainer>
             <MenuMobile className={burgerOpen && "open"}></MenuMobile>
@@ -53,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
         transition:0.15s height ease-in-out;
     }
 `
+
 const HeaderContainer = styled.header`
     background-color: #fff;
     width: 100%;
@@ -74,9 +73,15 @@ const MenuMobile = styled.div`
     top:100px; // = hauteur du header au moment de l'ouverture
     background-color:${colors.clair2};
     z-index:999;
-    display:none;
+    visibility:hidden;
+    opacity:0;
+    transform:translateX(20px);
+    transition:0.1s opacity ease-in-out 0.4s, 0.15s transform ease-in-out 0.4s;
     &.open{
-        display:block;
+        visibility:visible;
+        opacity:1;
+        transform:translateX(0px);
+        transition:0.1s opacity ease-in-out 0.4s, 0.15s transform ease-in-out 0.4s;
     }
 `
 const MenuMobileBackground = styled.div`
@@ -87,8 +92,12 @@ const MenuMobileBackground = styled.div`
     top:100px; // = hauteur du header au moment de l'ouverture
     background-color:rgba(0,0,0,0.8);
     z-index:998;
-    display:none;
+    visibility:hidden;
+    opacity:0;
+    transition:0.1s opacity ease-in-out;
     &.open{
-        display:block;
+        visibility:visible;
+        opacity:1;
+        transition:0.1s opacity ease-in-out;
     }
 `

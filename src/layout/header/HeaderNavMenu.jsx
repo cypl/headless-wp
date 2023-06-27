@@ -1,12 +1,11 @@
 import { useContext } from 'react'
-import PropTypes from 'prop-types'
 import { styled } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { ContextSiteInfos } from '../../context/ContextSiteInfos'
 import { colors } from '../../utils/theme'
 
-function HeaderNavMenu({burgerOpen}){
-    const { menuPrincipal } = useContext(ContextSiteInfos)
+function HeaderNavMenu(){
+    const { menuPrincipal, burgerOpen } = useContext(ContextSiteInfos)
 
     // Si le NavLink qui a la classe .active a aussi une classe .sub-menu-link
     // alors le <li> parent qui a la classe .parent doit avoir son élément enfant <NavLink> avec la classe ".menu-link" prendre également la classe ".active"
@@ -37,10 +36,6 @@ function HeaderNavMenu({burgerOpen}){
 }
 
 export default HeaderNavMenu
-
-HeaderNavMenu.propTypes = {
-    burgerOpen: PropTypes.bool,
-}
 
 const MenuHeader = styled.ul`
     height: 40px;
