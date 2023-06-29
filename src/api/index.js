@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const ENV = 'http://localhost:8888/headless-wp'
 const pagesRoutes = `${ENV}/wp-json/custom-api/v1/pages-routes`
@@ -9,68 +9,54 @@ const menus = `${ENV}/wp-json/custom-api/v1/menus`
 const siteInfos = `${ENV}/wp-json/custom-api/v1/site-infos`
 const acfCustomisationOptions = `${ENV}/wp-json/custom-api/v1/options/all`
 
-export function useFetchPagesRoutes() {
-    const [dataPagesRoutes, setDataPagesRoutes] = useState({})
-    const [isLoadedPagesRoutes, setLoadedPagesRoutes] = useState(false)
-    const [isErrorPagesRoutes, setErrorPagesRoutes] = useState()
-  
-    async function FetchPagesRoutes() {
-        setLoadedPagesRoutes(false)
-        try {
-            const response = await axios.get(pagesRoutes)
-            setDataPagesRoutes(response.data)
-            setErrorPagesRoutes(null)
-            setLoadedPagesRoutes(true)
-        } catch (error) {
-            setErrorPagesRoutes(error.response)
-            setLoadedPagesRoutes(true)
+const useFetchData = (path) => {
+    const [data, setData] = useState({})
+    const [isLoaded, setLoaded] = useState(false)
+    const [isError, setError] = useState()
+
+    useEffect(() => {
+        async function FetchData(path) {
+            setLoaded(false)
+            try {
+                const response = await axios.get(path)
+                setData(response.data)
+                setError(null)
+                setLoaded(true)
+            } catch (error) {
+                setError(error.response.status)
+                setLoaded(true)
+            }
         }
-    }
-  
-    return { FetchPagesRoutes, dataPagesRoutes, isLoadedPagesRoutes, isErrorPagesRoutes }
+        FetchData(path)
+    }, [path])
+
+    // Possibilité d'utiliser une classe de modélisation ici
+
+    return {data, isLoaded, isError}
+
 }
 
-export function useFetchPostsRoutes() {
-    const [dataPostsRoutes, setDataPostsRoutes] = useState({})
-    const [isLoadedPostsRoutes, setLoadedPostsRoutes] = useState(false)
-    const [isErrorPostsRoutes, setErrorPostsRoutes] = useState()
-  
-    async function FetchPostsRoutes() {
-        setLoadedPostsRoutes(false)
-        try {
-            const response = await axios.get(postsRoutes)
-            setDataPostsRoutes(response.data)
-            setErrorPostsRoutes(null)
-            setLoadedPostsRoutes(true)
-        } catch (error) {
-            setErrorPostsRoutes(error.response)
-            setLoadedPostsRoutes(true)
-        }
-    }
-  
-    return { FetchPostsRoutes, dataPostsRoutes, isLoadedPostsRoutes, isErrorPostsRoutes }
+export const API = {
+    GetPagesRoutes: () => {
+      return useFetchData(pagesRoutes)
+    },
+    GetPostsRoutes: () => {
+        return useFetchData(postsRoutes)
+    },
+    GetBateauxRoutes: () => {
+        return useFetchData(bateauxRoutes)
+    },
+    GetMenus: () => {
+        return useFetchData(menus)
+    },
+    GetSiteInfos: () => {
+        return useFetchData(siteInfos)
+    },
+    GetAcfCustomisation: () => {
+        return useFetchData(acfCustomisationOptions)
+    },
 }
 
-export function useFetchBateauxRoutes() {
-    const [dataBateauxRoutes, setDataBateauxRoutes] = useState({})
-    const [isLoadedBateauxRoutes, setLoadedBateauxRoutes] = useState(false)
-    const [isErrorBateauxRoutes, setErrorPostsRoutes] = useState()
-  
-    async function FetchBateauxRoutes() {
-        setLoadedBateauxRoutes(false)
-        try {
-            const response = await axios.get(bateauxRoutes)
-            setDataBateauxRoutes(response.data)
-            setErrorPostsRoutes(null)
-            setLoadedBateauxRoutes(true)
-        } catch (error) {
-            setErrorPostsRoutes(error.response)
-            setLoadedBateauxRoutes(true)
-        }
-    }
-  
-    return { FetchBateauxRoutes, dataBateauxRoutes, isLoadedBateauxRoutes, isErrorBateauxRoutes }
-}
 
 
 export function useFetchMenus() {
